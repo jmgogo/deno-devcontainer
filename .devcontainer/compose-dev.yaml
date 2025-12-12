@@ -12,6 +12,8 @@ services:
     volumes:
       # bind devcontainer files to container for reference
       - ../.devcontainer/:/home/deno/.devcontainer/
+      # bind vscode task files to container for reference
+      - ../.vscode/:/home/deno/.vscode/
       # bind workspace volume to clone deno projects
       - deno-devcontainer:/home/deno
   postgres-db:
@@ -26,9 +28,8 @@ services:
 
 volumes:
   postgres-data:
-    name: deno-postgres-data
+    name: deno-pg-data
     driver: local
-volumes:
   deno-devcontainer:
-    name: deno-workspace
+    name: deno-pg-workspace
     driver: local
