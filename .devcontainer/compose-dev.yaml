@@ -2,26 +2,21 @@
 # https://docs.docker.com/compose/compose-file/
 
 # develop app service
-version: '0.1'
 services:
-      
-  # create producer service
-  deno-app:
-    # set image name and tag
-    image: deno:development
-    # configure build properties
-    build: 
-      # set build context to producer devcontainer
-      context: .
-      # limit build to development stage
-      target: development
-    # bind host to container to persist file changes
+  deno-jupyter:
+    image: deno-jupyter:development
+    container_name: deno-jupyter
+    hostname: deno-devcontainer
+    # build image from Dockerfile
+    build: .
     volumes:
-      - ..:/usr/app:cached
-    # enable allocation of pseudo-TTY to keep service running
-    tty: true
-    # keep standard input open on container
-    stdin_open: true
-    # overrides default command so things don't shut down after the process ends.
-    command: /bin/sh -c "while sleep 1000; do :; done"
-    
+      # bind devcontainer files to container for reference
+      - ../.devcontainer/:/home/deno/.devcontainer/
+      # bind example deno notebook
+      - ../example.deno.ipynb:/home/deno/example.deno.ipynb
+      # bind workspace volume to clone deno projects
+      - deno-jupyter:/home/deno
+volumes:
+  deno-jupyter:
+    name: deno-workspace
+    driver: local
