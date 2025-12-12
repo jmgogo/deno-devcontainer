@@ -5,17 +5,6 @@
 # Latest version of Deno on Debian
 FROM denoland/deno:debian as devcontainer
 
-# Update the system and install necessary packages
-RUN apt update  \
-    && apt upgrade -y  \
-    # Install Jupyter
-    && apt install -y jupyter \
-    # Install Deno kernel for jupyter
-    && deno jupyter --install \
-    # Clean up the system to reduce image size
-    && apt clean \
-    && rm -rf /var/lib/apt/lists/* 
-
 # set working directory
 WORKDIR /home/deno
 

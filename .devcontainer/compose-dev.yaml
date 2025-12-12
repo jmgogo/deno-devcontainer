@@ -3,20 +3,32 @@
 
 # develop app service
 services:
-  deno-jupyter:
-    image: deno-jupyter:development
-    container_name: deno-jupyter
+  deno-devcontainer:
+    image: deno-devcontainer:development
+    container_name: deno-devcontainer
     hostname: deno-devcontainer
     # build image from Dockerfile
     build: .
     volumes:
       # bind devcontainer files to container for reference
       - ../.devcontainer/:/home/deno/.devcontainer/
-      # bind example deno notebook
-      - ../example.deno.ipynb:/home/deno/example.deno.ipynb
       # bind workspace volume to clone deno projects
-      - deno-jupyter:/home/deno
+      - deno-devcontainer:/home/deno
+  postgres-db:
+    image: postgres:18
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+
 volumes:
-  deno-jupyter:
+  postgres-data:
+    name: deno-postgres-data
+    driver: local
+volumes:
+  deno-devcontainer:
     name: deno-workspace
     driver: local

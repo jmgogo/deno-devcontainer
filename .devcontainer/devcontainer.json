@@ -1,15 +1,18 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
 {
-	"name": "deno-jupyter",
+	"name": "deno-devcontainer",
 	"dockerComposeFile": [
 		"./compose-dev.yaml"
 	],
-	"service": "deno-jupyter",
+	"service": "deno-devcontainer",
 	"workspaceFolder": "/home/deno",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/devcontainers/features/git:1": {}
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/robbert229/devcontainer-features/postgresql-client": {
+			"version": "18"
+		}
 	},
 	"customizations": {
 		"vscode": {
