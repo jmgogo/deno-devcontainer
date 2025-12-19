@@ -19,8 +19,8 @@
 
 To use a deno devcontainer, select the branch that best matches your project requirements.
 
-- `**deno-postgres**`: setup with a basic deno environment and a postgresql database service
-- `**deno-jupyter**`: setup for using deno on a jupyter notebook
+- **`deno-postgres`**: setup with a basic deno environment and a postgresql database service
+- **`deno-jupyter`**: setup for using deno on a jupyter notebook
 
 Open Docker Desktop to run the Docker daemon, a background process that manages and coordinates Docker containers on your system. On VS Code, start the development container by running `Dev Containers: Rebuild and Reopen In Container` in the command palette. It can be accessed with the keyboard shortcut `ctrl + shift + P` on your keyboard.
 
@@ -58,3 +58,7 @@ Deno is a simple, modern, and secure runtime for JavaScript and TypeScript appli
 - **Third-party packages**: Deno doesn’t require/support any package manager to host third-party packages. All the third-party packages can be used as standard ES modules which gets imported through HTTP or could also be local. They can be hosted anywhere like GitHub, enterprise web server, personal web server, or local file system. Deno downloads them in a cache before using them.
 - **Standard library:** Like all the major programming languages, Deno comes with a standard library that contains common peer-reviewed utilities like file, hash, HTTP, I/O, mime, WebSocket, log, date, time, UUID, crypto, hash, etc. Most of the standard library’s APIs are available through promises. There are hardly any old-style callbacks.
 - **Web APIs:** Deno continually enhances its support for web APIs. Deno strives to have the same API as the browser. The familiar web APIs makes it easier for developers to write both front-end & server-side code. Some examples are- fetch, File, TextEncoder, TextDecoder, localStorage, sessionStorage, etc.
+
+---
+
+_Checkout the [deno docs](https://docs.deno.com/runtime/) or [examples](https://docs.deno.com/examples/) for more information!_
